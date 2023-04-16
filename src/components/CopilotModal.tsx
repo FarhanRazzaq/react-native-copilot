@@ -32,7 +32,7 @@ import {
 
 type Props = CopilotOptions;
 
-const noop = () => {};
+const noop = () => { };
 
 const makeDefaultLayout = (): LayoutRectangle => ({
   x: 0,
@@ -300,13 +300,18 @@ export const CopilotModal = forwardRef<CopilotModalHandle, Props>(
       const MaskComponent =
         overlay === "svg"
           ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-            require("./SvgMask").SvgMask
+          require("./SvgMask").SvgMask
           : // eslint-disable-next-line @typescript-eslint/no-var-requires
-            require("./ViewMask").ViewMask;
+          require("./ViewMask").ViewMask;
 
       const size = maskRect && {
         x: maskRect.width,
         y: maskRect.height,
+      };
+
+      const { goToNext } = useCopilot()
+      const handleNext = () => {
+        void goToNext();
       };
 
       const position = maskRect;
@@ -322,7 +327,7 @@ export const CopilotModal = forwardRef<CopilotModalHandle, Props>(
           animationDuration={animationDuration}
           backdropColor={backdropColor}
           svgMaskPath={svgMaskPath}
-          onClick={handleMaskClick}
+          onClick={handleNext}
           currentStep={currentStep}
         />
       );
