@@ -699,8 +699,13 @@ var CopilotModal = (0, import_react3.forwardRef)(
         y: maskRect.height
       };
       const { goToNext } = useCopilot()
+
       const handleNext = () => {
-        void goToNext();
+        if (currentStep?.order == 4 || currentStep?.order == 7 || currentStep?.order == 9 || currentStep?.order == 11 || currentStep?.order == 15 || currentStep?.order == 25 || currentStep?.order == 30 || currentStep?.order == 31) {
+          handleStop();
+        } else {
+          void goToNext();
+        }
       };
 
       const position = maskRect;
