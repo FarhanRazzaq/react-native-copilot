@@ -702,11 +702,14 @@ var CopilotModal = (0, import_react3.forwardRef)(
 
       const handleNext = () => {
         if (currentStep?.order == 4 || currentStep?.order == 7 || currentStep?.order == 9 || currentStep?.order == 11 || currentStep?.order == 15 || currentStep?.order == 25 || currentStep?.order == 30 || currentStep?.order == 31) {
-          handleStop();
+          void stop();
+          reset();
         } else {
           void goToNext();
         }
       };
+
+      console.log('currentStep', currentStep?.order);
 
       const position = maskRect;
       return <MaskComponent
